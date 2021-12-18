@@ -1,0 +1,470 @@
+body {
+   background-color: rgba(0, 0, 0, 0.1);
+   padding: 30px 0 0 0;
+}
+.container {
+   padding-top: 100px;
+   display: grid;
+   grid-template-areas: "income main expense";
+   grid-template-rows: 1fr;
+   grid-template-columns: 25% 1fr 25%;
+}
+.title {
+   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+   font-size: 20px;
+   position: fixed;
+   left: 40%;
+   padding-bottom: 10px;
+   text-transform: uppercase;
+   word-spacing: 5px;
+}
+.expense-chart {
+   grid-area: expense;
+}
+.income-chart {
+   grid-area: income;
+}
+.expense-chart h2,
+.income-chart h2 {
+   text-align: center;
+   margin: 0;
+   font-size: 16px;
+   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+      sans-serif;
+}
+
+main {
+   grid-area: main;
+   grid-template-areas: "balance transaction";
+   display: grid;
+   grid-template-rows: 1fr;
+   grid-template-columns: 40% 1fr;
+}
+.wrapper {
+   position: relative;
+   width: 200px;
+   grid-area: balance;
+}
+.main-block {
+   grid-area: transaction;
+}
+
+.balance-container {
+   margin: 0 auto;
+   width: 100%;
+   height: 45%;
+   border-radius: 50%;
+   border: 3px solid black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+.balance-title {
+   font-size: 14px;
+   font-style: italic;
+   text-align: center;
+   color: rgba(0, 0, 0, 0.3);
+   margin: 0;
+}
+.balance {
+   text-align: center;
+   margin: 0;
+   font-size: 25px;
+}
+.balance-container::before {
+   content: "";
+   width: 100%;
+   height: 100%;
+   background-color: transparent;
+   border: 10px solid rgba(18, 126, 145);
+   filter: blur(2px);
+   border-radius: 50%;
+   position: absolute;
+   top: -10px;
+   left: -10px;
+   animation-name: rotate-circle-second;
+   animation-iteration-count: infinite;
+   animation-duration: 0.8s;
+}
+.balance-container::after {
+   content: "";
+   width: 98%;
+   height: 98%;
+   background-color: transparent;
+   border: 10px solid rgb(21, 161, 185);
+   border-radius: 50%;
+   position: absolute;
+   top: -5px;
+   left: -5px;
+   animation-name: rotate-circle-first;
+   animation-iteration-count: infinite;
+   animation-duration: 0.8s;
+   filter: blur(2px);
+}
+
+@keyframes rotate-circle-first {
+   0% {
+      transform: rotate(72deg);
+      transform: translate(2px, 2px);
+   }
+   25% {
+      transform: rotate(144deg);
+      transform: translate(2px, -2px);
+   }
+   50% {
+      transform: rotate(216deg);
+      transform: translate(-2px, -2px);
+   }
+   75% {
+      transform: rotate(288deg);
+      transform: translate(-2px, 2px);
+   }
+   100% {
+      transform: rotate(360deg);
+      transform: translate(2px, 2px);
+   }
+}
+
+@keyframes rotate-circle-second {
+   0% {
+      transform: rotate(-72deg);
+      transform: translate(-2px, -2px);
+   }
+   25% {
+      transform: rotate(-144deg);
+      transform: translate(-2px, 2px);
+   }
+   50% {
+      transform: rotate(-216deg);
+      transform: translate(2px, 2px);
+   }
+   75% {
+      transform: rotate(-288deg);
+      transform: translate(2px, -2px);
+   }
+   100% {
+      transform: rotate(-360deg);
+      transform: translate(-2px, -2px);
+   }
+}
+
+.operations {
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   margin: 0 auto;
+   padding: 15px 10px;
+   margin-top: 27px;
+   background-color: white;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+   border-radius: 5px;
+}
+.operation-title {
+   margin: 0 auto;
+   text-align: center;
+   font-size: 12px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+
+.operation-cash {
+   margin: 0;
+   text-align: center;
+}
+.green {
+   color: green;
+}
+.red {
+   color: red;
+}
+.transaction {
+   width: 87%;
+   padding-left: 20px;
+}
+
+.transaction-title {
+   font-size: 14px;
+   margin: 0;
+}
+.underline {
+   height: 1px;
+   background-color: rgba(0, 0, 0, 0.2);
+   margin-bottom: 15px;
+}
+.transaction-text {
+   margin-bottom: 0;
+   font-size: 12px;
+}
+input,
+select {
+   display: block;
+   width: 99%;
+   height: 25px;
+   margin: 10px 0;
+   border-radius: 3px;
+   border: none;
+}
+select {
+   width: 100%;
+   height: 27px;
+}
+.btn-add,
+.btn-history {
+   height: 30px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgb(21, 161, 185);
+   border: none;
+   border-radius: 4px;
+   color: white;
+   letter-spacing: 0.8px;
+   transition: 0.5s ease;
+}
+.btn-add {
+   width: 100%;
+   margin-top: 10px;
+}
+.history-block {
+   padding-left: 20px;
+   width: 100%;
+}
+.history-list {
+   height: 200px;
+   overflow-y: scroll;
+}
+.history-list::-webkit-scrollbar {
+   width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+   background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+   background-color: rgb(74, 183, 202);
+   border-radius: 20px;
+}
+.btn-history {
+   width: 87%;
+   margin-top: 10px;
+}
+.btn-add:hover,
+.btn-history:hover {
+   background-color: rgb(74, 183, 202);
+   cursor: pointer;
+}
+.btn-add :disabled,
+.btn-add[disabled] {
+   border: 1px solid #999999;
+   background-color: #cccccc;
+   color: #666666;
+}
+.item {
+   width: 87%;
+   height: 50px;
+   background-color: white;
+   border-radius: 4px;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 15px;
+   position: relative;
+}
+.moneybox {
+   position: absolute;
+   left: 10px;
+   width: 20px;
+   height: 20px;
+}
+.item-title {
+   position: absolute;
+   left: 40px;
+}
+.item-date {
+   position: absolute;
+   top: 10px;
+   left: 165px;
+   font-size: 10px;
+}
+.item-cash {
+   position: absolute;
+   right: 30px;
+}
+.item-btn {
+   position: absolute;
+   right: 6px;
+}
+
+.green-line {
+   background-color: green;
+   width: 5px;
+   height: 100%;
+}
+.red-line {
+   background-color: red;
+   width: 5px;
+   height: 100%;
+}
+.btn-delete {
+   display: none;
+   transition: 0.5s ease;
+}
+
+.item-container {
+   padding-left: 20px;
+   margin-left: -20px;
+}
+
+.racoon {
+   width: 170%;
+   height: 170%;
+}
+
+.racoon-container {
+   position: absolute;
+   top: 40%;
+   left: 85%;
+}
+.error {
+   position: relative;
+   top: -10px;
+   left: 0;
+   color: red;
+   margin: 0;
+   font-size: 13px;
+   height: 7px;
+}
+
+@media (max-width: 1100px) {
+   .container {
+      grid-template-areas:
+         "main main"
+         "income expense";
+      grid-template-rows: 1fr 40%;
+      grid-template-columns: 1fr 1fr;
+   }
+   main {
+      margin: 0 auto;
+      width: 70%;
+   }
+   .balance-container {
+      width: 85%;
+      height: 35%;
+   }
+   .racoon-container {
+      top: 30%;
+   }
+   .title {
+      left: 40%;
+   }
+}
+
+@media (max-width: 800px) {
+   body {
+      padding: 40px 0 0 0;
+   }
+   .container {
+      grid-template-areas:
+         "main"
+         "income"
+         "expense";
+      grid-template-rows: 1fr 20% 20%;
+      grid-template-columns: 1fr;
+   }
+   main {
+      width: 100%;
+      grid-template-areas:
+         "balance"
+         "transaction";
+      grid-template-rows: 40% 1fr;
+      grid-template-columns: 1fr;
+      height: 70%;
+   }
+   .title {
+      left: 30%;
+   }
+
+   .operation-title {
+      font-size: 24px;
+   }
+   .chart-title {
+      font-size: 24px;
+   }
+   .wrapper {
+      margin: 0 auto;
+      width: 100%;
+   }
+   .main-block {
+      margin: 0 auto;
+      width: 90%;
+      margin: 50px 0 0 70px;
+   }
+   .balance-container {
+      width: 25%;
+      height: 58%;
+   }
+   .balance-title {
+      font-size: 22px;
+   }
+
+   .balance-container::before {
+      width: 100%;
+      height: 100%;
+   }
+   .balance-container::after {
+      width: 98%;
+      height: 98%;
+   }
+   .transaction-title {
+      font-size: 20px;
+   }
+   .racoon-container {
+      top: 40%;
+      left: 65%;
+   }
+   .racoon {
+      width: 30%;
+      height: 30%;
+   }
+
+   input,
+   select {
+      height: 50px;
+      margin: 20px 0;
+      font-size: 24px;
+      padding-left: 10px;
+   }
+   .operations {
+      width: 50%;
+      font-size: 24px;
+   }
+   .btn-add,
+   .btn-history {
+      height: 50px;
+      font-size: 24px;
+      margin-bottom: 20px;
+   }
+   .expense-chart,
+   .income-chart {
+      font-size: 24px;
+   }
+   .item-title {
+      left: 10%;
+   }
+   .item-date {
+      top: 0;
+      left: 50%;
+      font-size: 16px;
+   }
+   .item-cash {
+      right: 8%;
+   }
+   .expense-chart {
+      margin-top: 150px;
+   }
+}
